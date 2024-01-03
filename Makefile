@@ -22,6 +22,9 @@ doc:
 	make -C openraft/src/docs/faq
 	RUSTDOCFLAGS="-D warnings" cargo doc --document-private-items --all --no-deps
 
+watch_doc:
+	RUSTDOCFLAGS='-Z unstable-options --sort-modules-by-appearance' cargo watch -x 'doc --document-private-items --all --no-deps'
+
 check_missing_doc:
 	# Warn about missing doc for public API
 	RUSTDOCFLAGS="-W missing_docs" cargo doc --all --no-deps
